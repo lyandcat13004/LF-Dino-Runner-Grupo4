@@ -1,7 +1,5 @@
-from email import utils
 from pygame.sprite import Sprite
-
-from utils.constants import RUNNING 
+from dino_runner.utils.constants import RUNNING
 
 class Dinosaur(Sprite):
     X_POS = 30
@@ -14,6 +12,7 @@ class Dinosaur(Sprite):
         self.dino_rect.y = self.Y_POS
         self.dino_run = True
         self.dino_step = 0
+        print("Dinosaurio incializado")
 
     def update(self):
         self.run()
@@ -21,7 +20,6 @@ class Dinosaur(Sprite):
             self.dino_step = 0
 
     def draw(self, screen):
-        print(self.dino_step)
         screen.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
         
 

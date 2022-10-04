@@ -1,7 +1,7 @@
 import pygame
-from components.dinosaur import Dinosaur
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
-
+from dino_runner.components.dinosaur import Dinosaur
+from dino_runner.components.bird import Bird
 
 class Game:
     def __init__(self):
@@ -12,6 +12,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.playing = False
         self.dino = Dinosaur()
+        self.bird = Bird()
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
@@ -32,13 +33,15 @@ class Game:
 
     def update(self):
         self.dino.update()
-        print(self.dino_step)
+        self.bird.update()
+
         
     def draw(self):
         self.clock.tick(FPS)
         self.screen.fill((255, 255, 255))
         self.draw_background()
         self.dino.draw(self.screen)
+        self.bird.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 
