@@ -1,3 +1,4 @@
+
 import pygame
 from components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
@@ -18,6 +19,8 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
+        self.death_count = 0
+        self.points= 0
 
     def run(self):
         # Game loop: events - update - draw
@@ -56,3 +59,8 @@ class Game:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
+
+    def score(self):
+        points += 1
+        if points % 100 == 0:
+            self.game_speed += 1
