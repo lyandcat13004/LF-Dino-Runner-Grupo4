@@ -1,8 +1,8 @@
 
 import pygame
-from components.obstacles.obstacle_manager import ObstacleManager
+from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
-from components.dinosaur import Dinosaur
+from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.bird import Bird
 
 class Game:
@@ -39,9 +39,11 @@ class Game:
     def update(self):
         user_input = pygame.key.get_pressed()
         self.dino.update(user_input)
+        self.obstacle_manager.update(self)
         self.bird.update()
         
     def draw(self):
+        self.score()
         self.clock.tick(FPS)
         self.screen.fill((255, 255, 255))
         self.draw_background()
@@ -61,6 +63,6 @@ class Game:
         self.x_pos_bg -= self.game_speed
 
     def score(self):
-        points += 1
-        if points % 100 == 0:
+        self.points += 1
+        if self.points % 100 == 0:
             self.game_speed += 1

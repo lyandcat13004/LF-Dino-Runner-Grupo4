@@ -22,6 +22,7 @@ class Dinosaur(Sprite):
         ##print("Dinosaurio incializado")
 
     def update(self, input):
+        print(self.dino_jump)
         if self.dino_run:
             self.run()
 
@@ -51,7 +52,7 @@ class Dinosaur(Sprite):
     def jump(self):
         self.image = self.dino_jump_img
         if self.dino_jump:
-            self.dino_rect.y -= self.jump_vel * 2
+            self.dino_rect.y += self.jump_vel * 2
             self.jump_vel -= 0.5
         
         if self.jump_vel <= self.JUMP_VEL:
