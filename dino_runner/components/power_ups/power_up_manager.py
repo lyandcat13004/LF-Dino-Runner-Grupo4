@@ -28,14 +28,6 @@ class PowerUpManager:
         self.generator_power_ups(points)
         for power_up in self.power_ups:
             power_up.update(game_speed, self.power_ups)
-            if dino.dino_rect.colliderect(power_up.rect):
-                player.shield = True
-                player.show_text = True
-                player.type = power_up.type
-                power_up.start_time = pygame.time.get_ticks()
-                time_random = random.randrange(5, 8)
-                dino.shield_time_up = power_up.start_time + (time_random * 1000)
-                self.power_ups.remove(power_up)
 
     def draw(self, screen):
         for power_up in self.power_ups:
