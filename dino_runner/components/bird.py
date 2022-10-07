@@ -5,7 +5,7 @@ import random
 
 class Bird(Obstacle):
     X_POS = 1000
-    Y_POS = 100
+    Y_POS = 300
 
     def __init__(self):
         self.type = random.randint(0, 1)
