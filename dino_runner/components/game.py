@@ -2,6 +2,7 @@
 from email import message
 import pygame
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
+##from dino_runner.components.power_ups.power_up_manager import PowerUpManager
 from dino_runner.utils.constants import BG, ICON, RUNNING, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.utils import text_utils
@@ -18,6 +19,7 @@ class Game:
         self.game_running = True
         self.dino = Dinosaur()
         self.obstacle_manager = ObstacleManager()
+        ##self.power_up_manager = PowerUpManager()
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
@@ -52,6 +54,7 @@ class Game:
         user_input = pygame.key.get_pressed()
         self.dino.update(user_input)
         self.obstacle_manager.update(self)
+        ##self.power_up_manager.update(self.points, self.game_speed, self.dino)
         
     def draw(self):
         self.score()
@@ -61,6 +64,7 @@ class Game:
         self.score()
         self.dino.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
+        ##self.power_up_manager.draw(self.screen)
         pygame.display.update()
         pygame.display.flip()
 
@@ -81,6 +85,7 @@ class Game:
         self.screen.blit(text, text_rect)
         ##print("Points: ", self.points)
         ##print("Speed: ", self.game_speed)
+        ##self.dino.check_invicibility(self.screen)
 
     def show_menu(self):
         self.screen.fill((255, 255, 255))
